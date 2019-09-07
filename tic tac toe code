@@ -1,0 +1,72 @@
+def print_board(l):
+    for i in range(7,0,-3):
+        print(' | | ')
+        for j in range(i,i+3):
+            if j<i+2:
+                print(l[j],end='|')
+            else:
+                print(l[j])
+        if i>1:
+            print('_|_|_')
+        else:
+            print(' | | ')
+def win_check(l,c):
+    if l[7]==l[8]==l[9]==c or l[7]==l[4]==l[1]==c or l[7]==l[5]==l[3]==c or l[4]==l[5]==l[6]==c or l[9]==l[6]==l[3]==c or l[1]==l[2]==l[3]==c or l[9]==l[5]==l[1]==c or l[8]==l[5]==l[2]==c:
+        print(f'Congratulations to player {c.upper()} you have won the game')
+        res=0
+        return res
+    else:
+        pass
+print('Welcome to Tic Tac Toe!')
+def play_again():
+    c=input('Do You Want to be X or O?')
+    print(f'Player {c.upper()} Will Go First.')
+    return c
+c=play_again()
+cond=input('Are you ready to play?Enter Yes or No')
+l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+s=1
+def play_game(l,c,s):
+    from IPython.display import clear_output
+    for i in range(1,10):
+        if c.upper()=='X':
+            p=int(input('Choose your next position?[1,9]'))
+            l.insert(p,c.upper())
+            l.pop(p+1)
+            print_board(l)
+            s=win_check(l,c.upper())
+            if s==0:
+                break
+            c='O'
+            continue
+        elif c.upper()=='O':
+            p=int(input('Choose your next position?[1,9]'))
+            l.insert(p,c.upper())
+            l.pop(p+1)
+            print_board(l)
+            s=win_check(l,c.upper())
+            if s==0:
+                break
+            c='X'
+            continue
+        else:
+            print("invalid choice")
+            break
+    if s!=0:
+        print('Game Tied')
+    cond1=input('Do you want to Play Again?[Yes or No]')
+    if cond1.lower()=='yes':
+        clear_output
+        c=play_again()
+        s=1        
+        l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+        cond=input('Are you ready to play?Enter Yes or No')
+        if cond.lower()=='yes':
+            play_game(l,c,s)
+    elif cond1.lower()=='no':
+        print('Good luck come again to play.')
+        
+if cond.lower()=='yes':
+    play_game(l,c,s)
+elif cond.lower()=='no':
+    print('Start the game again when u are ready to play.')
