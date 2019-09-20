@@ -36,11 +36,9 @@ while True:
     else:
         print('enter valid choice')
         continue
-l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-s=1
+l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '];s=1
 def play_game(l,c,s):
-    marker=[]
-    i=1
+    marker=[];i=1
     while i<10:
         if c.upper()=='X':
             z=i
@@ -85,10 +83,7 @@ def play_game(l,c,s):
     while True:
         cond1=input('Do you want to Play Again?[Yes or No]')
         if cond1.lower()=='yes':
-            clear_output()
-            c=play_again()
-            s=1        
-            l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+            clear_output();c=play_again();s=1;l=['#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
             cond=input('Are you ready to play?Enter Yes or No')
             if cond.lower()=='yes':
                 play_game(l,c,s)
